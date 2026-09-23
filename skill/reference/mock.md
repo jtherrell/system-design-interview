@@ -12,7 +12,7 @@ Before phase 1:
 
 | Phase | Time | Job |
 |---|---|---|
-| 1. Setup | 1 min | Confirm question. If `$2+` given, use it verbatim. Otherwise pick from [reference/topics.md](topics.md) per the rule above (catalog filtered by `level.md`, `--direction`, and excluding slugs already in `runs.md`). Confirm time budget (default 45 min) and level. |
+| 1. Setup | 1 min | State the problem directly. If `$2+` given, use it verbatim. Otherwise pick from [reference/topics.md](topics.md) per the rule above (catalog filtered by `level.md`, `--direction`, and excluding slugs already in `runs.md`). State the time budget (default 45 min) and resolved level without asking for confirmation. End the opening after the problem statement and wait for the candidate to lead; do not prompt them to ask clarifying questions or suggest their first step. |
 | 2. Requirements | 5–8 min | Let candidate drive. Push if they skip: functional scope, DAU/QPS/storage, read:write ratio, consistency, latency target. Don't volunteer architecture. |
 | 3. High-level design | 10–15 min | They draw boxes. For each major component, ask "why this over X?". Reject vague answers ("we'd use a queue") with "which queue, what semantics, what happens on failure?". |
 | 4. Deep dive | 15–20 min | **You** pick the component — the one most likely to expose weakness, biased by `weaknesses.md` and by `--direction` (e.g. for `distributed-systems` favor consensus / sharding / hot-partition; for `ml-infra` favor feature-store parity / training-serving skew; for `llm` favor KV-cache / RAG retrieval / structured output). Stay on it; don't let them deflect. |
