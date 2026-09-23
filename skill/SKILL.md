@@ -1,6 +1,6 @@
 ---
-name: system-design
-description: "Practice system design interviews. Four modes: `mock` (Claude=interviewer, strict, scores at end), `learn` (Claude=interviewee at staff level so user sees what good looks like; `--auto` runs both roles as sub-agents while user observes), `postmortem` (diagnose a past real interview, with --file or free-form Q&A), `generate` (create a fresh question + rubric and write 4 markdown files to ./system-design-questions/<slug>/). Use when the user types the system-design command, asks to practice, mock, or postmortem a system design interview, or wants to generate practice questions."
+name: system-design-interview
+description: "Practice system design interviews. Four modes: `mock` (Claude=interviewer, strict, scores at end), `learn` (Claude=interviewee at staff level so user sees what good looks like; `--auto` runs both roles as sub-agents while user observes), `postmortem` (diagnose a past real interview, with --file or free-form Q&A), `generate` (create a fresh question + rubric and write 4 markdown files to ./system-design-questions/<slug>/). Use when the user types the system-design-interview command, asks to practice, mock, or postmortem a system design interview, or wants to generate practice questions."
 version: 0.3.0
 argument-hint: "<mock|learn|postmortem|generate> [problem-or-topic] [--flags]"
 user-invocable: true
@@ -10,7 +10,7 @@ user-invocable: true
 
 A practice harness for system design interviews. Each invocation dispatches on the first positional argument.
 
-> Invocation differs by harness: Claude Code uses `/system-design ...`, Codex uses `$system-design ...`. The rest of this document writes commands without a prefix — use whichever your harness expects.
+> Invocation differs by harness: Claude Code uses `/system-design-interview ...`, Codex uses `$system-design-interview ...`. The rest of this document writes commands without a prefix — use whichever your harness expects.
 
 ## Commands
 

@@ -27,7 +27,7 @@ Then output:
 
 1. **Most likely failure modes** — specific, not generic. Quote what they said and tie it to a specific gap. Example: "You said you 'used a message queue' — staff bar requires naming the queue, semantics, retry behavior, and idempotency story."
 2. **What a stronger candidate would have done** at the 2–3 moments they described. When the gap was structural (missing component, wrong topology, deep-dive without a wire-level walkthrough), include a diagram inline showing the stronger answer — in the style specified by `--diagram-style` (default `ascii`; see SKILL.md). Use templates from [reference/diagrams.md](diagrams.md). Skip the diagram when the gap was non-structural (numbers, communication, tradeoff articulation).
-3. **Drills** as concrete commands the user can run next (e.g. `system-design mock <topic>`, `system-design generate <topic>`).
+3. **Drills** as concrete commands the user can run next (e.g. `system-design-interview mock <topic>`, `system-design-interview generate <topic>`).
 
 ## State updates
 

@@ -1,4 +1,4 @@
-# system-design
+# system-design-interview
 
 A skill for practicing system design interviews. Four modes:
 
@@ -7,7 +7,7 @@ A skill for practicing system design interviews. Four modes:
 - **`postmortem`** — Diagnose a real interview you took. Pass `--file` with notes, or answer structured questions.
 - **`generate`** — Author a fresh question + rubric. Writes four files (`question.md`, `assumptions.md`, `description.md`, `rubric.md`) to `./system-design-questions/<slug>/`.
 
-Works in **Claude Code** (raw skill, or as a plugin via the marketplace) and **Codex CLI**.
+Works in **Claude Code** and **Codex CLI**.
 
 ## Demo
 
@@ -21,26 +21,15 @@ A shorter clip showing first-run setup (`examples/init/demo-init.mp4`) is also c
 
 Pick the path that matches your harness. All installation methods use the same `skill/` directory.
 
-### Claude Code — plugin (recommended)
-
-Install via the built-in marketplace:
-
-```
-/plugin marketplace add ftvision/system-design-skill
-/plugin install system-design@system-design
-```
-
-After install, `/system-design` is available in any Claude Code session. Updates flow through `/plugin update`.
-
 ### Claude Code — raw skill copy
 
 ```bash
 git clone https://github.com/ftvision/system-design-skill.git /tmp/system-design-skill
 mkdir -p ~/.claude/skills
-cp -R /tmp/system-design-skill/skill ~/.claude/skills/system-design
+cp -R /tmp/system-design-skill/skill ~/.claude/skills/system-design-interview
 ```
 
-Verify: `ls ~/.claude/skills/system-design/SKILL.md`. Then `/system-design` is available.
+Verify: `ls ~/.claude/skills/system-design-interview/SKILL.md`. Then `/system-design-interview` is available.
 
 ### Codex CLI
 
@@ -49,35 +38,35 @@ User-wide:
 ```bash
 git clone https://github.com/ftvision/system-design-skill.git /tmp/system-design-skill
 mkdir -p ~/.agents/skills
-cp -R /tmp/system-design-skill/skill ~/.agents/skills/system-design
+cp -R /tmp/system-design-skill/skill ~/.agents/skills/system-design-interview
 ```
 
-Project-local: copy `skill/` to your project's `.agents/skills/system-design/`.
+Project-local: copy `skill/` to your project's `.agents/skills/system-design-interview/`.
 
-After install, open `/skills` in Codex (or invoke `$system-design ...`). Restart Codex if the skill doesn't appear immediately.
+After install, open `/skills` in Codex (or invoke `$system-design-interview ...`). Restart Codex if the skill doesn't appear immediately.
 
 ## Usage
 
 Replace the prefix with whatever your harness uses (`/` for Claude Code, `$` for Codex).
 
 ```
-system-design mock                              # generate a question, run a strict mock
-system-design mock "design a URL shortener"
-system-design mock --level=senior
+system-design-interview mock                              # generate a question, run a strict mock
+system-design-interview mock "design a URL shortener"
+system-design-interview mock --level=senior
 
-system-design postmortem                        # structured Q&A about a past interview
-system-design postmortem --file=./notes.md
+system-design-interview postmortem                        # structured Q&A about a past interview
+system-design-interview postmortem --file=./notes.md
 
-system-design generate                          # generate question + rubric (4 files)
-system-design generate "rate limiter"
-system-design generate "chat system" --level=staff
-system-design generate --direction=ml-infra     # bias topic to ML infra subdomain
-system-design generate --direction=llm          # LLM inference / RAG / agents
+system-design-interview generate                          # generate question + rubric (4 files)
+system-design-interview generate "rate limiter"
+system-design-interview generate "chat system" --level=staff
+system-design-interview generate --direction=ml-infra     # bias topic to ML infra subdomain
+system-design-interview generate --direction=llm          # LLM inference / RAG / agents
 
-system-design learn                             # you interview Claude
-system-design learn "design Cursor's autocomplete backend"
-system-design learn --auto                      # two sub-agents, you watch
-system-design learn --auto --exchanges=15       # cheaper run (default 30 exchanges)
+system-design-interview learn                             # you interview Claude
+system-design-interview learn "design Cursor's autocomplete backend"
+system-design-interview learn --auto                      # two sub-agents, you watch
+system-design-interview learn --auto --exchanges=15       # cheaper run (default 30 exchanges)
 ```
 
 ## State (persisted across sessions)
@@ -119,13 +108,10 @@ Each exchange in `--auto` mode = 2 sub-agent calls. Default 30 exchanges = ~60 c
 ```text
 system-design-skill/
 ├── README.md
-├── .claude-plugin/marketplace.json         # marketplace points to ./skill
-├── .github/workflows/release.yml          # version bump and release
 └── skill/                                # the only skill source; edit here
-    ├── .claude-plugin/plugin.json         # Claude Code plugin metadata
     ├── SKILL.md
     ├── reference/                        # mode instructions and reference material
-    └── scripts/speak.sh                   # optional voice helper
+    └── scripts/speak.sh                  # optional voice helper
 ```
 
-Edit `skill/` directly. Raw installations copy this directory, and the Claude Code marketplace installs it as a plugin. There are no generated copies or sync step.
+Edit `skill/` directly. Installations copy or symlink this directory. There are no generated copies or sync step.

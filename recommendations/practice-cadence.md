@@ -6,10 +6,10 @@ A sustainable rhythm for getting better at system design interviews using the fo
 
 | Cadence | Mode | Purpose |
 |---|---|---|
-| Daily, ~15 min | `system-design generate <topic>` | Read the rubric + assumptions + interviewer notes. Don't solve. Just absorb what "good" and "common failure modes" look like for varied problems. After ~10 of these, you have a working catalog. |
-| 2×/week, 45 min | `system-design mock <topic>` cold | Run a real-feeling mock. The interviewer pushes on requirements gathering and picks the deep-dive you didn't. Ends with a scored debrief that updates your state. |
-| 1×/week, ~30 min | `system-design learn --auto <topic> --exchanges=10` | Watch two agents run a full session. The transcript shows what staff-bar pacing and density look like; the retrospective shows where even strong runs have holes. |
-| Within 24h of a real interview | `system-design postmortem` | Memory decay is brutal — what feels vague today is unrecoverable next week. Run this immediately after every real round, win or lose. |
+| Daily, ~15 min | `system-design-interview generate <topic>` | Read the rubric + assumptions + interviewer notes. Don't solve. Just absorb what "good" and "common failure modes" look like for varied problems. After ~10 of these, you have a working catalog. |
+| 2×/week, 45 min | `system-design-interview mock <topic>` cold | Run a real-feeling mock. The interviewer pushes on requirements gathering and picks the deep-dive you didn't. Ends with a scored debrief that updates your state. |
+| 1×/week, ~30 min | `system-design-interview learn --auto <topic> --exchanges=10` | Watch two agents run a full session. The transcript shows what staff-bar pacing and density look like; the retrospective shows where even strong runs have holes. |
+| Within 24h of a real interview | `system-design-interview postmortem` | Memory decay is brutal — what feels vague today is unrecoverable next week. Run this immediately after every real round, win or lose. |
 
 (Replace the prefix with whatever your harness uses — `/` for Claude Code, `$` for Codex.)
 

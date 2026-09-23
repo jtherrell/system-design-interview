@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# speak.sh — speak a line aloud for the system-design skill.
+# speak.sh — speak a line aloud for the system-design-interview skill.
 #
 # Usage:
 #   speak.sh [--voice=<macos-voice>] [--role=<label>] [--engine=say|elevenlabs] "text"
