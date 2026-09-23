@@ -1,6 +1,6 @@
 # topics — vetted catalog for `mock` and `generate`
 
-A curated set of system-design problems, tagged by difficulty and by the dimension(s) they stress. Use as the default suggestion list when a user runs `mock` or `generate` without a topic.
+A curated set of system-design problems, tagged by difficulty and by the dimension(s) they stress. Use to resolve explicit slugs in `mock` (see [mock.md](mock.md)) and as the default suggestion list when a user runs `mock` or `generate` without a topic.
 
 **Tagging key:**
 - **Difficulty**: `easy` (warmup, ~30 min), `medium` (canonical 45-min mock), `hard` (staff bar, multiple deep dives), `staff+` (principal-level, requires multi-region or novel substrate).

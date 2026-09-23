@@ -19,7 +19,7 @@ A shorter clip showing first-run setup (`examples/init/demo-init.mp4`) is also c
 
 ## Install
 
-Pick the path that matches your harness. The repo ships three pre-built install layouts so you can copy the right one.
+Pick the path that matches your harness. All installation methods use the same `skill/` directory.
 
 ### Claude Code — plugin (recommended)
 
@@ -36,7 +36,8 @@ After install, `/system-design` is available in any Claude Code session. Updates
 
 ```bash
 git clone https://github.com/ftvision/system-design-skill.git /tmp/system-design-skill
-cp -R /tmp/system-design-skill/.claude/skills/system-design ~/.claude/skills/system-design
+mkdir -p ~/.claude/skills
+cp -R /tmp/system-design-skill/skill ~/.claude/skills/system-design
 ```
 
 Verify: `ls ~/.claude/skills/system-design/SKILL.md`. Then `/system-design` is available.
@@ -48,10 +49,10 @@ User-wide:
 ```bash
 git clone https://github.com/ftvision/system-design-skill.git /tmp/system-design-skill
 mkdir -p ~/.agents/skills
-cp -R /tmp/system-design-skill/.agents/skills/system-design ~/.agents/skills/system-design
+cp -R /tmp/system-design-skill/skill ~/.agents/skills/system-design
 ```
 
-Project-local: copy `.agents/skills/system-design/` into your project's `.agents/skills/`.
+Project-local: copy `skill/` to your project's `.agents/skills/system-design/`.
 
 After install, open `/skills` in Codex (or invoke `$system-design ...`). Restart Codex if the skill doesn't appear immediately.
 
@@ -115,27 +116,16 @@ Each exchange in `--auto` mode = 2 sub-agent calls. Default 30 exchanges = ~60 c
 
 ## Repo layout
 
-```
+```text
 system-design-skill/
-├── README.md                              # this file
-├── skill/                                 # canonical source (edit here)
-│   ├── SKILL.md
-│   └── reference/
-│       ├── mock.md
-│       ├── learn.md
-│       ├── postmortem.md
-│       └── generate.md
-├── scripts/sync.sh                        # syncs skill/ -> the three install layouts
-│
-├── .claude-plugin/marketplace.json        # Claude Code marketplace manifest
-├── plugin/                                # Claude Code plugin layout
-│   ├── .claude-plugin/plugin.json
-│   └── skills/system-design/              # synced from skill/
-│
-├── .claude/skills/system-design/          # Claude Code raw-install layout (synced)
-└── .agents/skills/system-design/          # Codex CLI raw-install layout (synced)
+├── README.md
+├── .claude-plugin/marketplace.json         # marketplace points to ./skill
+├── .github/workflows/release.yml          # version bump and release
+└── skill/                                # the only skill source; edit here
+    ├── .claude-plugin/plugin.json         # Claude Code plugin metadata
+    ├── SKILL.md
+    ├── reference/                        # mode instructions and reference material
+    └── scripts/speak.sh                   # optional voice helper
 ```
 
-**Edit `skill/` only.** The three install layouts are **derived copies — never edit them by hand.** After changing `skill/`, run `./scripts/sync.sh` to regenerate them, then commit all four (`skill/` + the three derived dirs) so users can `cp` directly without running the script.
-
-Drift is guarded: `./scripts/sync.sh --check` verifies the derived copies match `skill/` (no writes), and CI runs it on every PR — so a hand-edited or un-synced copy fails the build.
+Edit `skill/` directly. Raw installations copy this directory, and the Claude Code marketplace installs it as a plugin. There are no generated copies or sync step.

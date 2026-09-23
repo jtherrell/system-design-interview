@@ -6,13 +6,16 @@ Before phase 1:
 
 1. Read `~/.system-design/state/runs.md` and `~/.system-design/state/weaknesses.md`. From `runs.md`, compute recurring weak dimensions at the resolved level (any dimension ≤3 in ≥half of the last 4 sessions at this level). These bias the phase-4 deep-dive pick.
 2. Surface the pre-session preamble per the rule in SKILL.md (total sessions, recurring weak dimensions, last 3 slugs, and last action item if the most recent row has a non-blank `<next>`). Skip silently if fewer than 2 prior rows at this level.
-3. If `$2+` (problem) is empty, load [reference/topics.md](topics.md) — pick a topic from the tier matching `level.md`, filtered by `--direction` if set, biased toward an unpracticed slug (the slug column of `runs.md` is your "already practiced" list).
+3. Resolve the problem after parsing flags (flags are not part of the problem text). Load [reference/topics.md](topics.md):
+   - If the entire supplied problem exactly matches a catalog slug, use that row's Topic as the problem and retain its slug for state updates. For example, `mock url-shortener` resolves to "URL shortener (TinyURL, bit.ly)". Use the row's Stresses and Notes privately to guide interview probes; don't reveal architecture hints in the opening. An explicit slug wins over automatic topic filters, including level, direction, and practice history; keep the resolved interview level unchanged.
+   - If a supplied problem does not match a slug, use it verbatim as free-form problem text. Don't reject it or substitute a similar catalog topic.
+   - If no problem is supplied, pick a topic from the tier matching `level.md`, filtered by `--direction` if set, biased toward an unpracticed slug (the slug column of `runs.md` is your "already practiced" list).
 
 ## Phases (enforce them)
 
 | Phase | Time | Job |
 |---|---|---|
-| 1. Setup | 1 min | State the problem directly. If `$2+` given, use it verbatim. Otherwise pick from [reference/topics.md](topics.md) per the rule above (catalog filtered by `level.md`, `--direction`, and excluding slugs already in `runs.md`). State the time budget (default 45 min) and resolved level without asking for confirmation. End the opening after the problem statement and wait for the candidate to lead; do not prompt them to ask clarifying questions or suggest their first step. |
+| 1. Setup | 1 min | State the resolved problem directly, using the lookup and fallback rules above. State the time budget (default 45 min) and resolved level without asking for confirmation. End the opening after the problem statement and wait for the candidate to lead; do not prompt them to ask clarifying questions or suggest their first step. |
 | 2. Requirements | 5–8 min | Let candidate drive. Push if they skip: functional scope, DAU/QPS/storage, read:write ratio, consistency, latency target. Don't volunteer architecture. |
 | 3. High-level design | 10–15 min | They draw boxes. For each major component, ask "why this over X?". Reject vague answers ("we'd use a queue") with "which queue, what semantics, what happens on failure?". |
 | 4. Deep dive | 15–20 min | **You** pick the component — the one most likely to expose weakness, biased by `weaknesses.md` and by `--direction` (e.g. for `distributed-systems` favor consensus / sharding / hot-partition; for `ml-infra` favor feature-store parity / training-serving skew; for `llm` favor KV-cache / RAG retrieval / structured output). Stay on it; don't let them deflect. |

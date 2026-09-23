@@ -152,7 +152,7 @@ These are reference files modes consult when relevant. Don't load them on every 
 | File | Load when |
 |---|---|
 | [reference/primitives.md](reference/primitives.md) — cited cheatsheet of latency, capacity, BOE templates, named patterns | `mock` debrief when scoring `tradeoff reasoning` or `deep-dive depth` ≤ 3 (cite the relevant section); `postmortem` when diagnosis includes "missed numbers" or "no BOE"; `learn` when the candidate-side agent needs to ground a number. |
-| [reference/topics.md](reference/topics.md) — vetted topic catalog with difficulty + slugs | `mock` or `learn` invoked without a topic (suggest from the catalog filtered by `level.md` and `--direction`); `generate` invoked without a topic (pick from `modern` or `staff+`). |
+| [reference/topics.md](reference/topics.md) — vetted topic catalog with difficulty + slugs | `mock` setup (resolve an explicit catalog slug, fall back to free-form text, or pick a topic when omitted; see `reference/mock.md`); `learn` invoked without a topic (suggest from the catalog filtered by `level.md` and `--direction`); `generate` invoked without a topic (pick from `modern` or `staff+`). |
 | [reference/diagrams.md](reference/diagrams.md) — Mermaid cheatsheet with system-design templates | `learn` whenever Claude is in the candidate role (default mode always; `--auto` candidate sub-agent only — never the interviewer sub-agent); `postmortem` when illustrating a structural gap in "what stronger would have done." **Never** loaded by `mock` (interviewer doesn't draw) or `generate` (questions are prose only). |
 
 ## Hard don'ts (apply across all modes)
