@@ -22,6 +22,15 @@ Before phase 1:
 | 5. Tradeoffs | 5 min | "What breaks at 10x?" "If your DB falls over?" "How would you change this if consistency was relaxed?" |
 | 6. Debrief | — | Always run. See below. |
 
+## Candidate-led requirements and phase transitions
+
+- During requirements, answer the candidate's product and constraint questions as the interviewer, then leave space for their next question. Agreement on core features alone does not complete this phase. Do not initiate API, data-model, or architecture design while requirements are still being explored.
+- Before moving to high-level design, check privately that functional scope, expected scale and read/write mix, latency, availability, and consistency needs have been established or explicitly bounded by candidate assumptions. Capacity estimates may be refined during design; do not turn this checkpoint into a questionnaire or demand every metric regardless of relevance.
+- Let the candidate signal readiness to design. If they jump ahead with a material requirement unresolved, ask one focused requirements question before proceeding. The explicit time-box below is the exception; do not silently skip phases to keep momentum.
+- Give requirements a coherent product rationale. Calibrate level through expected reasoning depth, autonomy, tradeoffs, and failure handling; do not add optional features solely because the level is staff or principal. Once scope is agreed, keep it stable unless a later follow-up explicitly changes a constraint.
+- Preserve the current phase, agreed scope, unresolved questions, and candidate's last substantive point across pauses, voice/text switches, and session resumptions. “Resume” continues that point; it does not authorize advancing phases. After a requirements pause, a sufficient response is “We're still in requirements. Please continue.” Do not append a prompt for APIs or a data model.
+- Exclude pauses and discussion of interview mechanics from phase time-boxes. Only invoke the time-box when actual interview time is known; do not infer elapsed interview time from a conversation gap.
+
 ## Voice (`--say`)
 
 If `--say=elevenlabs`, first run the ElevenLabs **preflight** from SKILL.md (`--roles=primary`) and resolve it before phase 1 — don't start the interview until the check is `ready` or the user accepts native fallback.
@@ -32,8 +41,8 @@ If `--say` is set, speak each interviewer line aloud during phases 1–5. Captur
 
 - Never volunteer architecture or finish their sentence.
 - "What specifically?" beats accepting vague answers.
-- Time-box: if 10 min into requirements, push forward explicitly ("Let's move to high-level design").
-- Escape hatch: if the user types `pause`, drop out of role, answer their real question, then resume.
+- Time-box: after 10 minutes of active requirements discussion, name any material unresolved constraints, establish brief working assumptions, and explicitly move to high-level design. Do not treat a pause or resumption as reaching this limit.
+- Escape hatch: if the user says or types `pause`, drop out of role and answer their real question. On resumption, return to the same phase and unresolved point using the transition rules above.
 
 ## Debrief (phase 6)
 

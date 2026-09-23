@@ -19,14 +19,14 @@ A shorter clip showing first-run setup (`examples/init/demo-init.mp4`) is also c
 
 ## Install
 
-Pick the path that matches your harness. All installation methods use the same `skill/` directory.
+Pick the path that matches your harness. The repository root is the skill directory; `SKILL.md` is its entry point.
 
 ### Claude Code — raw skill copy
 
 ```bash
-git clone https://github.com/ftvision/system-design-skill.git /tmp/system-design-skill
-mkdir -p ~/.claude/skills
-cp -R /tmp/system-design-skill/skill ~/.claude/skills/system-design-interview
+git clone https://github.com/jtherrell/system-design-interview.git /tmp/system-design-interview
+mkdir -p ~/.claude/skills/system-design-interview
+cp -R /tmp/system-design-interview/{SKILL.md,reference,scripts} ~/.claude/skills/system-design-interview/
 ```
 
 Verify: `ls ~/.claude/skills/system-design-interview/SKILL.md`. Then `/system-design-interview` is available.
@@ -36,12 +36,12 @@ Verify: `ls ~/.claude/skills/system-design-interview/SKILL.md`. Then `/system-de
 User-wide:
 
 ```bash
-git clone https://github.com/ftvision/system-design-skill.git /tmp/system-design-skill
-mkdir -p ~/.agents/skills
-cp -R /tmp/system-design-skill/skill ~/.agents/skills/system-design-interview
+git clone https://github.com/jtherrell/system-design-interview.git /tmp/system-design-interview
+mkdir -p ~/.agents/skills/system-design-interview
+cp -R /tmp/system-design-interview/{SKILL.md,reference,scripts} ~/.agents/skills/system-design-interview/
 ```
 
-Project-local: copy `skill/` to your project's `.agents/skills/system-design-interview/`.
+Project-local: copy `SKILL.md`, `reference/`, and `scripts/` into your project's `.agents/skills/system-design-interview/`.
 
 After install, open `/skills` in Codex (or invoke `$system-design-interview ...`). Restart Codex if the skill doesn't appear immediately.
 
@@ -106,12 +106,12 @@ Each exchange in `--auto` mode = 2 sub-agent calls. Default 30 exchanges = ~60 c
 ## Repo layout
 
 ```text
-system-design-skill/
+system-design-interview/
 ├── README.md
-└── skill/                                # the only skill source; edit here
-    ├── SKILL.md
-    ├── reference/                        # mode instructions and reference material
-    └── scripts/speak.sh                  # optional voice helper
+├── SKILL.md                              # skill entry point
+├── reference/                            # mode instructions and reference material
+├── scripts/speak.sh                      # optional voice helper
+└── recommendations/                      # practice guidance
 ```
 
-Edit `skill/` directly. Installations copy or symlink this directory. There are no generated copies or sync step.
+Edit the skill files directly. For local development, symlink your installed skill directory to the repository root so edits take effect without copying. There are no generated copies or sync step.
